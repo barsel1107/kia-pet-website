@@ -1,0 +1,15 @@
+{
+  "name": "kia-pet-appointment-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kia Pet Kuaför & Spa - Randevu formu için Express + Nodemailer sunucusu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.14"
+  }
+}
