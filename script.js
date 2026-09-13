@@ -19,18 +19,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Logoya tıklandığında sayfanın başına yumuşak kaydırma yap.
+  // Zaten ana sayfadaysak sayfayı yeniden yüklemek yerine sadece yukarı kaydırıyoruz.
   ['brand-home', 'brand-home-footer'].forEach(function (id) {
     var el = document.getElementById(id);
     if (!el) return;
     el.addEventListener('click', function (e) {
-      var onHomePage = /(^\/$|index\.html$)/.test(window.location.pathname) || window.location.pathname === '';
-      if (onHomePage) {
+      // el.pathname tarayıcı tarafından otomatik çözülmüş (resolved) yoldur,
+      // bu sayede hem file:// hem kök dizin hem de GitHub Pages'in
+      // alt klasörlü yapısında (örn. /kia-pet-website/) doğru çalışır.
+      if (el.pathname === window.location.pathname) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
   });
 
+  // ---------- Randevu formu ----------
+  // NOT: Site canlıya (kendi domaininize / hosting'e) alındığında bu adresi
+  // randevu sunucunuzun gerçek adresiyle değiştirin (örn. "https://api.kiapetkuafor.com").
   var API_BASE = 'http://localhost:3001';
 
   var showFormBtn = document.getElementById('show-email-form');
